@@ -307,8 +307,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                         ),
 
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                           children: [
@@ -351,8 +350,5 @@ class _SignupScreenState extends State<SignupScreen> {
         } )
           )
           );
-
-
-
         }
 }

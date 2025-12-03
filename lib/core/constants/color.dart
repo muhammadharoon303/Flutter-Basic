@@ -1,0 +1,10 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+const whiteColor=Colors.white;
+const pinkColor=Color(0xffFE2B5F);
+const redColor=Color(0xff);
+const blackColor=Color(0xff040404);
+const bluueColor=Color(0xff);
