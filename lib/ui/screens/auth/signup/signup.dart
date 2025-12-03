@@ -1,176 +1,172 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:first/core/constants/auth_decoration.dart';
+import 'package:first/core/constants/color.dart';
+import 'package:first/core/constants/textstyle.dart';
 import 'package:first/core/enums/enums.dart';
+import 'package:first/ui/custom_widgets/custom_button.dart';
 import 'package:first/ui/screens/auth/login/login_viewmodel.dart';
-import 'package:first/ui/screens/auth/signup/signup.dart.dart';
-import 'package:first/ui/screens/home/home_screen.dart';
 import 'package:first/ui/screens/root_screen/root_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
-  final _GloballoginKey =GlobalKey<FormState>();
-  final _GlobalsignupKey =GlobalKey<FormState>();
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: ChangeNotifierProvider(
         create: (context) => LoginViewModel(),
-        child:Consumer<LoginViewModel>(builder: ( context, model,child) {
-          return Scaffold(
-            body: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/static_assets/signup.png"),
-                  fit: BoxFit.cover,
+        child: Consumer<LoginViewModel>(
+          builder: (context, model, child) {
+            return Scaffold(
+              ///
+              /// Start Body
+              ///
+              body: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/static_assets/signup.png"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              child: Center(
-                child: Container(
-                  margin: EdgeInsets.only(top: 256, left: 19),
-                  height: 443,
-                  width: 353,
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 16,
+                child: Center(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 256, left: 19, right: 19),
+                    height: 443,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            gradient: LinearGradient(
-                              colors: [Color(0xffFE2B5F), Color(0xffD02E56)],
+
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 16,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ///
+                          /// Top logo
+                          ///
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              gradient: LinearGradient(
+                                colors: [pinkColor, Color(0xffD02E56)],
+                              ),
+                            ),
+                            child: Image.asset(
+                              "assets/icons_assets/run.png",
+                              scale: 4,
                             ),
                           ),
-                          child: Image.asset(
-                            "assets/icons_assets/run.png",
-                            scale: 4,
+                          Container(
+                            padding: EdgeInsets.only(left: 80, right: 80),
+                            child: TabBar(
+                              labelColor: pinkColor,
+                              indicatorColor: pinkColor,
+                              indicatorSize: TabBarIndicatorSize.tab,
+                              labelStyle: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              tabs: [
+                                Tab(text: "Login"),
+                                Tab(text: "Signup"),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(left: 80, right: 80),
-                          child: TabBar(
-                            labelColor: Color(0xffFE2B5F),
-                            indicatorColor: Color(0xffFE2B5F),
-                            indicatorSize: TabBarIndicatorSize.tab,
-                            tabs: [
-                              Tab(text: "login"),
-                              Tab(text: "signup"),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Expanded(
-                          child: TabBarView(
-                            children: [
-                              SingleChildScrollView(
-                                child: Form(
-                                  key: _GloballoginKey,
+                          SizedBox(height: 20),
+                          Expanded(
+                            child: TabBarView(
+                              children: [
+                                SingleChildScrollView(
+                                  child: Form(
+                                    key: model.globalLoginKey,
 
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        left: 10, right: 10),
                                     child: Column(
                                       children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 8,
-                                                spreadRadius: 0,
-                                                color: Color(0xff989898),
-                                              ),
-                                            ],
-                                          ),
-                                          child: TextFormField(
-                                            validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  value == null) {
-                                                return "Please enter username";
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                            decoration: authdecoration,
-                                          ),
+                                        TextFormField(
+                                          validator: (value) {
+                                            if (value!.isEmpty ||
+                                                value == null) {
+                                              return "Please enter username";
+                                            } else {
+                                              return null;
+                                            }
+                                          },
+                                          decoration: authdecoration,
                                         ),
                                         SizedBox(height: 10),
 
                                         SizedBox(height: 10),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 8,
-                                                spreadRadius: 0,
-                                                color: Color(0xff989898),
-                                              ),
-                                            ],
-                                          ),
-                                          child: TextFormField(
-                                            validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  value == null) {
-                                                return "Please Enter Your Password ";
-                                              }
-                                              else {
-                                                return null;
-                                              }
-                                            },
-                                            decoration: authdecoration
-                                                .copyWith(
-                                              hintText: "Password",
-                                            ),
+                                        TextFormField(
+                                          validator: (value) {
+                                            if (value!.isEmpty ||
+                                                value == null) {
+                                              return "Please Enter Your Password ";
+                                            } else {
+                                              return null;
+                                            }
+                                          },
+                                          decoration: authdecoration.copyWith(
+                                            hintText: "Password",
                                           ),
                                         ),
                                         SizedBox(height: 20),
                                         InkWell(
-                                          onTap: ()async {
-                                            if (_GloballoginKey.currentState!
+                                          onTap: () async {
+                                            if (model
+                                                .globalLoginKey
+                                                .currentState!
                                                 .validate()) {
-
                                               model.setState(ViewState.busy);
-                                           await   Future.delayed(Duration(seconds: 4));
-                                              Navigator.push(context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        RootScreen(),));
+                                              await Future.delayed(
+                                                Duration(seconds: 4),
+                                              );
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      RootScreen(),
+                                                ),
+                                              );
                                               model.setState(ViewState.idle);
                                             }
                                           },
-                                          child: Container(
-                                            color: Colors.red,
-                                            height: 50,
-                                            width: 300,
-                                            alignment: Alignment.center,
-                                            child: model.state == ViewState.busy ? CircularProgressIndicator(): Text(
-
-                                              "login",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
+                                          child: CustomButton(
+                                            child: model.state == ViewState.busy
+                                                ? CircularProgressIndicator(
+                                                    backgroundColor: whiteColor,
+                                                  )
+                                                : Text(
+                                                    "Login",
+                                                    style: style14.copyWith(
+                                                      color: whiteColor,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
                                           ),
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                              CrossAxisAlignment.center,
                                           children: [
                                             Text("Don't have an account?"),
 
@@ -180,7 +176,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        SignupScreen(),
+                                                        SignUpScreen(),
                                                   ),
                                                 );
                                               },
@@ -188,7 +184,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                                 "Signup",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  color: Color(0xffFE2B5F),
+                                                  color: pinkColor,
                                                 ),
                                               ),
                                             ),
@@ -198,26 +194,17 @@ class _SignupScreenState extends State<SignupScreen> {
                                     ),
                                   ),
                                 ),
-                              ),
-                              SingleChildScrollView(
-                                child: Form(
-                                  key: _GlobalsignupKey,
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        left: 10, right: 10),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 8,
-                                                spreadRadius: 0,
-                                                color: Color(0xff989898),
-                                              ),
-                                            ],
-                                          ),
-                                          child: TextFormField(
+                                SingleChildScrollView(
+                                  child: Form(
+                                    key: model.globalSignUpKey,
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                        left: 10,
+                                        right: 10,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          TextFormField(
                                             validator: (value) {
                                               if (value!.isEmpty ||
                                                   value == null) {
@@ -228,19 +215,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                             },
                                             decoration: authdecoration,
                                           ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 8,
-                                                spreadRadius: 0,
-                                                color: Color(0xff989898),
-                                              ),
-                                            ],
-                                          ),
-                                          child: TextFormField(
+                                          SizedBox(height: 10),
+                                          TextFormField(
                                             validator: (value) {
                                               if (value!.isEmpty ||
                                                   value == null) {
@@ -249,24 +225,12 @@ class _SignupScreenState extends State<SignupScreen> {
                                                 return null;
                                               }
                                             },
-                                            decoration: authdecoration
-                                                .copyWith(
+                                            decoration: authdecoration.copyWith(
                                               hintText: "Email",
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 8,
-                                                spreadRadius: 0,
-                                                color: Color(0xff989898),
-                                              ),
-                                            ],
-                                          ),
-                                          child: TextFormField(
+                                          SizedBox(height: 10),
+                                          TextFormField(
                                             validator: (value) {
                                               if (value!.isEmpty ||
                                                   value == null) {
@@ -275,80 +239,90 @@ class _SignupScreenState extends State<SignupScreen> {
                                                 return null;
                                               }
                                             },
-                                            decoration: authdecoration
-                                                .copyWith(
+                                            decoration: authdecoration.copyWith(
                                               hintText: "Password",
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(height: 20, width: 10),
-                                        InkWell(
-                                          onTap: () {
-                                            if (_GlobalsignupKey.currentState!
-                                                .validate()) {
-                                              Navigator.push(context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        RootScreen(),));
-                                            }
-                                          },
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            color: Colors.red,
-                                            height: 50,
-                                            width: 300,
-                                            child: Text(
-                                              "sign up",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 25),
-                                            ),
-                                          ),
-                                        ),
-
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: [
-                                            Text("Already have an account?"),
-                                            TextButton(
-                                              onPressed: () {
+                                          SizedBox(height: 20, width: 10),
+                                          InkWell(
+                                            onTap: () {
+                                              if (model
+                                                  .globalSignUpKey
+                                                  .currentState!
+                                                  .validate()) {
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
-                                                        SignupScreen(),
+                                                        RootScreen(),
                                                   ),
                                                 );
-                                              },
-                                              child: Text(
-                                                "login",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Color(0xffFE2B5F),
+                                              }
+                                            },
+                                            child: CustomButton(
+                                              child:
+                                                  model.state == ViewState.busy
+                                                  ? CircularProgressIndicator(
+                                                      backgroundColor:
+                                                          whiteColor,
+                                                    )
+                                                  : Text(
+                                                      "Singup",
+                                                      style: style14.copyWith(
+                                                        color: whiteColor,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 16,
+                                                      ),
+                                                    ),
+                                            ),
+                                          ),
+
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text("Already have an account?"),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SignUpScreen(),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Text(
+                                                  "Login",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: pinkColor,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          );
-        } )
-          )
-          );
-        }
+            );
+          },
+        ),
+      ),
+    );
+  }
 }

@@ -21,7 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
     // Timer to navigate after 3 seconds
     Timer(Duration(seconds: 2), () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => SignupScreen()));
+        context,
+        MaterialPageRoute(builder: (context) => SignUpScreen()),
+      );
     });
   }
 
@@ -29,7 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset("assets/static_assets/splash.png",
+        child: Image.asset(
+          "assets/static_assets/splash.png",
           fit: BoxFit.cover,
           width: double.infinity,
           height: double.infinity,
@@ -38,7 +41,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
-
-
-
