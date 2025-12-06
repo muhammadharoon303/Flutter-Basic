@@ -46,12 +46,26 @@ class QrScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 200,left: 90),
                 child: Image.asset("assets/icons_assets/barcode.png",color: blackColor,scale: 1,),
               ),
-              SizedBox(height: 60),
-              Row(
-                children: [
-                  Image.asset("assets/icons_assets/scan.png",scale: 4,),
-                  Text("Scan Barcode"),
-                ],
+              SizedBox(height: 120),
+              Center(
+                child: Container(
+                  width: 297,
+                  height: 42,
+                  decoration: BoxDecoration(
+                    color: pinkColor,
+                    borderRadius: BorderRadius.circular(6)
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: [
+                      // Image.asset("assets/icons_assets/scan.png",color: whiteColor,),
+                      Icon(Icons.qr_code_scanner),
+                      SizedBox(width: 20,),
+                      Text("Scan Barcode"),
+                    ],
+                  ),
+                ),
               )
           ]),
         ),
