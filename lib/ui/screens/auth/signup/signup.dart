@@ -117,7 +117,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             if (value!.isEmpty ||
                                                 value == null) {
                                               return "Please Enter Your Password ";
-                                            } else {
+                                            } else if (value!.isEmpty ||
+                                                value.length <=7) {
+                                              return "Please Enter at least 8 characters ";}
+                                            else{
                                               return null;
                                             }
                                           },
@@ -235,7 +238,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               if (value!.isEmpty ||
                                                   value == null) {
                                                 return "Please enter password";
-                                              } else {
+                                              } else if (value!.isEmpty ||
+                                                  value.length <=7) {
+                                                return "Please Enter at least 8 characters ";}
+                                              else {
                                                 return null;
                                               }
                                             },
