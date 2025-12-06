@@ -2,6 +2,7 @@
 
 import 'package:first/core/constants/color.dart';
 import 'package:first/core/constants/textstyle.dart';
+import 'package:first/ui/screens/qr_screen/qr_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -235,7 +236,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: Text(
                   "Barcode Scanner",
-                  style: TextStyle(fontSize: 15, color: Color(0xff000000)),
+                  style: TextStyle(fontSize: 15, color: blackColor),
                 ),
               ),
               SizedBox(height: 10),
@@ -247,7 +248,7 @@ class HomeScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xff989898).withOpacity(0.15),
+                          color: whiteColor.withOpacity(0.15),
                           blurRadius: 4,
                           spreadRadius: 4,
                           offset: Offset(-1, 2),
@@ -261,7 +262,10 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("SCAN Bar\n   Code"),
+                        TextButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => QrScreen(),));
+                        }, child:Text("SCAN Bar\n   Code"),),
+
                         Image.asset(
                           "assets/icons_assets/barcode.png",
                           scale: 3,

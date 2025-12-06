@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+
+import '../../../core/constants/color.dart';
+import '../../../core/constants/textstyle.dart';
+
+class QrScreen extends StatelessWidget {
+  const QrScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          margin: const EdgeInsets.only(left: 25, right: 25),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Hello!", style: style14.copyWith(color: pinkColor)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                 Icon(Icons.arrow_back_ios,),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "Find A ",
+                          style: style24.copyWith(color: blackColor),
+                        ),
+                        TextSpan(
+                          text: "Challenge",
+                          style: style24.copyWith(color: pinkColor),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Image.asset("assets/icons_assets/search.png", scale: 3),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 123,left: 20),
+                child: Text("Scan your barcode",style: TextStyle(color: pinkColor,fontSize:24,fontWeight: FontWeight.bold),),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 200,left: 90),
+                child: Image.asset("assets/icons_assets/barcode.png",color: blackColor,scale: 1,),
+              ),
+              SizedBox(height: 60),
+              Row(
+                children: [
+                  Image.asset("assets/icons_assets/scan.png",scale: 4,),
+                  Text("Scan Barcode"),
+                ],
+              )
+          ]),
+        ),
+      ),
+    );
+  }
+}

@@ -19,10 +19,7 @@ class WorkoutScreen extends StatelessWidget {
           body: Column(
             children: [
               Text('Workout Screen'),
-
-              Container(
-                child: FlickVideoPlayer(flickManager: model.flickManager),
-              ),
+              FlickVideoPlayer(flickManager: model.flickManager),
             ],
           ),
         ),
