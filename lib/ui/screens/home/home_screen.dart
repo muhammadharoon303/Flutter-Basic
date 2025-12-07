@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 60),
+               SizedBox(height: 60),
 
               Stack(
                 children: [
@@ -264,12 +264,12 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         TextButton(onPressed: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) => QrScreen(),));
-                        }, child:Text("SCAN Bar\n   Code"),),
-
-                        Image.asset(
-                          "assets/icons_assets/barcode.png",
-                          scale: 3,
-                        ),
+                        }, child: Column(
+                          children: [Text("SCAN Bar\n   Code"),
+                            Image.asset(
+                              "assets/icons_assets/barcode.png",
+                              scale: 3,
+                            ),])),
                       ],
                     ),
                   ),
