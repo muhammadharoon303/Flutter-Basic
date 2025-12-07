@@ -1,3 +1,4 @@
+import 'package:first/ui/screens/qr_screen/scanner.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/color.dart';
@@ -60,9 +61,12 @@ class QrScreen extends StatelessWidget {
 
                     children: [
                       // Image.asset("assets/icons_assets/scan.png",color: whiteColor,),
-                      Icon(Icons.qr_code_scanner),
+                      Icon(Icons.qr_code_scanner,color: whiteColor,),
                       SizedBox(width: 20,),
-                      Text("Scan Barcode"),
+                      TextButton(onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ScannerScreen(),));
+                      },
+                      child: Text("Scan Barcode",style: TextStyle(color: whiteColor),)),
                     ],
                   ),
                 ),
