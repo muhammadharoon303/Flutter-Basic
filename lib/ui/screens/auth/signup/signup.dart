@@ -100,8 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       children: [
                                         TextFormField(
                                           validator: (value) {
-                                            if (value!.isEmpty ||
-                                                value == null) {
+                                            if (value!.isEmpty) {
                                               return "Please enter username";
                                             } else {
                                               return null;
@@ -114,10 +113,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         SizedBox(height: 10),
                                         TextFormField(
                                           validator: (value) {
-                                            if (value!.isEmpty ||
-                                                value == null) {
+                                            if (value!.isEmpty) {
                                               return "Please Enter Your Password ";
-                                            } else if (value!.isEmpty ||
+                                            } else if (value.isEmpty ||
                                                 value.length <=7) {
                                               return "Please Enter at least 8 characters ";}
                                             else{
@@ -209,8 +207,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         children: [
                                           TextFormField(
                                             validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  value == null) {
+                                              if (value!.isEmpty) {
                                                 return "Please enter username";
                                               } else {
                                                 return null;
@@ -221,8 +218,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           SizedBox(height: 10),
                                           TextFormField(
                                             validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  value == null) {
+                                              if (value!.isEmpty) {
                                                 return "Please Enter Email";
                                               } else {
                                                 return null;
@@ -235,10 +231,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           SizedBox(height: 10),
                                           TextFormField(
                                             validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  value == null) {
+                                              if (value!.isEmpty) {
                                                 return "Please enter password";
-                                              } else if (value!.isEmpty ||
+                                              } else if (value.isEmpty ||
                                                   value.length <=7) {
                                                 return "Please Enter at least 8 characters ";}
                                               else {
