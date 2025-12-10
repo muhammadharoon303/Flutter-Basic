@@ -198,7 +198,7 @@ class HomeScreen extends StatelessWidget {
                               value: 2355 / 4000,
                               strokeWidth: 8,
                               color: pinkColor,
-                              backgroundColor: Color(0xffCDCDCD),
+                              backgroundColor: whiteColor,
                             ),
                           ),
                           Padding(
@@ -217,7 +217,7 @@ class HomeScreen extends StatelessWidget {
                                   TextSpan(
                                     text: "total steps\n",
                                     style: TextStyle(
-                                      color: Color(0xffF22A5B),
+                                      color: pinkColor,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -244,11 +244,11 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: whiteColor,
+                      color:whiteColor,
                       borderRadius: BorderRadius.circular(6),
                       boxShadow: [
                         BoxShadow(
-                          color: whiteColor.withOpacity(0.15),
+                          color:  Color(0xff989898).withOpacity(0.15),
                           blurRadius: 4,
                           spreadRadius: 4,
                           offset: Offset(-1, 2),
@@ -265,7 +265,7 @@ class HomeScreen extends StatelessWidget {
                         TextButton(onPressed: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) => QrScreen(),));
                         }, child: Column(
-                          children: [Text("SCAN Bar\n   Code"),
+                          children: [Text("SCAN Bar\n   Code",style: TextStyle(color: blackColor),),
                             Image.asset(
                               "assets/icons_assets/barcode.png",
                               scale: 3,

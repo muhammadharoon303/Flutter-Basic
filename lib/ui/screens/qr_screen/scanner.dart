@@ -13,11 +13,16 @@ class ScannerScreen extends StatelessWidget {
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 39,left: 72),
+              padding: const EdgeInsets.only(top: 39, left: 72),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(Icons.arrow_back_ios,),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back_ios),
+                  ),
                   RichText(
                     text: TextSpan(
                       children: [
@@ -35,17 +40,21 @@ class ScannerScreen extends StatelessWidget {
                 ],
               ),
             ),
-             Stack(
+            Stack(
               children: [
-                Image.asset("assets/static_assets/scanner_bg.png", scale: 3,),
+                Image.asset("assets/static_assets/scanner_bg.png", scale: 3),
                 Positioned(
                   top: 114,
                   left: 14,
                   child: Center(
-                  child:  Image.asset("assets/icons_assets/scanner.png", scale: 3,),),
-                )
+                    child: Image.asset(
+                      "assets/icons_assets/scanner.png",
+                      scale: 3,
+                    ),
+                  ),
+                ),
               ],
-             )
+            ),
           ],
         ),
       ),

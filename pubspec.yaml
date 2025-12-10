@@ -37,6 +37,7 @@ dependencies:
   provider: ^6.1.5+1
   flick_video_player: ^0.9.0
   video_player: ^2.10.1
+  youtube_player_flutter:
 
 dev_dependencies:
   flutter_test:

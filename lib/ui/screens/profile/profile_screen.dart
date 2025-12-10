@@ -1,5 +1,6 @@
 import 'package:first/core/constants/color.dart';
 import 'package:first/ui/screens/home/home_screen.dart';
+import 'package:first/ui/screens/profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -9,39 +10,64 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-
       ),
       body: Column(
         children:[ SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            height: 122,
-            color: pinkColor,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset("assets/icons_assets/person_icon.png", scale: 5, width: 80,
-                    height: 80,
-                  ),
-                  SizedBox(height: 10),
-                  Text("Alex", style: TextStyle(color: blackColor,fontWeight: FontWeight.w600),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => HomeScreen()),
+          child: Stack(
+            children: [Container(
+              width: double.infinity,
+              height: 122,
+              color: pinkColor,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset("assets/icons_assets/person_icon.png", scale: 5, width: 80,
+                      height: 80,
+                    ),
+                    SizedBox(height: 10),
+                    Text("Alex", style: TextStyle(color: blackColor,fontWeight: FontWeight.w600),
+                    ),
+                    TextButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileScreen()),
                       );
-                    },style: ElevatedButton.styleFrom(
-                    backgroundColor: blackColor,
-                  ),
-                    child: Text("Edit Profile",style: TextStyle(fontWeight: FontWeight.w600,color: whiteColor),),
-                  ),
-                ],
+                    },style: TextButton.styleFrom(
+                      backgroundColor: blackColor,
+                    ),
+                      child: Text("Edit Profile",style: TextStyle(fontWeight: FontWeight.w600,color: whiteColor),),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
+            ),]
+          ),          // child: Container(
+          //   width: double.infinity,
+          //   height: 122,
+          //   color: pinkColor,
+          //   child: Padding(
+          //     padding: const EdgeInsets.only(top: 50),
+          //     child: Column(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: <Widget>[
+          //         Image.asset("assets/icons_assets/person_icon.png", scale: 5, width: 80,
+          //           height: 80,
+          //         ),
+          //         SizedBox(height: 10),
+          //         Text("Alex", style: TextStyle(color: blackColor,fontWeight: FontWeight.w600),
+          //         ),
+          //         TextButton(onPressed: () {
+          //             Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileScreen()),
+          //             );
+          //           },style: TextButton.styleFrom(
+          //           backgroundColor: blackColor,
+          //          ),
+          //           child: Text("Edit Profile",style: TextStyle(fontWeight: FontWeight.w600,color: whiteColor),),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ),
           SizedBox(height: 130,),
           Column(

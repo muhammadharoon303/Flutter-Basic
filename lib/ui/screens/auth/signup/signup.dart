@@ -9,7 +9,6 @@ import 'package:first/ui/screens/auth/login/login_viewmodel.dart';
 import 'package:first/ui/screens/root_screen/root_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
