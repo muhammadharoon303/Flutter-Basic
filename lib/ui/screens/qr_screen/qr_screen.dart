@@ -1,4 +1,3 @@
-import 'package:first/ui/custom_widgets/custom_button.dart';
 import 'package:first/ui/screens/qr_screen/scanner.dart';
 import 'package:flutter/material.dart';
 

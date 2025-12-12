@@ -1,38 +1,117 @@
 import 'package:first/core/constants/color.dart';
-import 'package:first/ui/screens/home/home_screen.dart';
 import 'package:first/ui/screens/profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-      ),
+      appBar: AppBar(),
       body: Column(
-
-        children:[
-
-      Stack(
-        clipBehavior: Clip.none,
-        alignment: Alignment.bottomCenter,
         children: [
-        Container(height: 122,color: pinkColor,width: double.infinity,),
-     ///
-          /// Porfile
+
           ///
+          /// Header aw Profile Image pa stack k
+          ///
+          Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.bottomCenter,
+            children: [
+              Container(
+                height: 122,
+                width: double.infinity,
+                color: pinkColor,
+              ),
 
-          Positioned(
-              bottom: -30,
-              child: CircleAvatar(radius: 40,backgroundColor: Colors.black,)),
+              /// Profile Image
+              Positioned(
+                bottom: -40,
+                child: Image.asset("assets/icons_assets/person_icon.png", scale: 4, width: 90, height: 90,),),
+            ],
+          ),
 
-      ],),
+       SizedBox(height: 50),
 
-          Container(child: Column(children: [],),),
+          /// User name da para
+          Text("Alex", style: TextStyle(color: blackColor, fontWeight: FontWeight.w600, fontSize: 18,),
+          ),
+          SizedBox(height: 10),
+
+          /// Edit Profile Button da para
+          TextButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => EditProfileScreen(),),);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: blackColor,
+              padding:
+              EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+            ),
+            child: Text("Edit Profile", style: TextStyle(color: whiteColor,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+
+           SizedBox(height: 40),
+
+          /// MENU  da para
+          Expanded(
+            child: ListView(
+              padding:  EdgeInsets.symmetric(horizontal: 15),
+              children: [
+                Card(
+                  child: ListTile(
+                    leading:
+                    Image.asset("assets/icons_assets/about.png", scale: 2),
+                    title:  Text("About Us"),
+                    trailing:  Icon(Icons.arrow_forward_ios, size: 20),
+                  ),
+                ),
+                 SizedBox(height: 20),
+                Card(
+                  child: ListTile(
+                    leading:
+                    Image.asset("assets/icons_assets/term.png", scale: 2),
+                    title: const Text("Terms and Condition"),
+                    trailing: const Icon(Icons.arrow_forward_ios, size: 20),
+                  ),
+                ),
+                 SizedBox(height: 20),
+
+                Card(
+                  child: ListTile(
+                    leading:
+                    Image.asset("assets/icons_assets/privacy.png", scale: 2),
+                    title:  Text("Privacy and Policy"),
+                    trailing:  Icon(Icons.arrow_forward_ios, size: 20),
+                  ),
+                ),
+               SizedBox(height: 20),
+
+                Card(
+                  child: ListTile(
+                    leading:
+                    Image.asset("assets/icons_assets/logout.png", scale: 2),
+                    title:  Text("Logout"),
+                    trailing: Icon(Icons.arrow_forward_ios, size: 20),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 
-        //   SingleChildScrollView(
+
+
+//   SingleChildScrollView(
         //   child: Stack(
         //     children: [
         //
@@ -97,40 +176,7 @@ class ProfileScreen extends StatelessWidget {
         // ),
         //   SizedBox(height: 130,),
         //   Column(
-        //     children: [
-        //       Card(
-        //         child: ListTile(
-        //           leading: Image.asset("assets/icons_assets/about.png",scale: 2,),
-        //           title: Text("About Us"),
-        //           trailing: Icon(Icons.arrow_forward_ios,size: 20,),
-        //         ),
-        //       ),
-        //       SizedBox(height: 20,),
-        //       Card(
-        //         child: ListTile(
-        //           leading: Image.asset("assets/icons_assets/term.png",scale: 2,),
-        //           title: Text("Terms and Condition"),
-        //           trailing: Icon(Icons.arrow_forward_ios,size: 20,),
-        //         ),
-        //       ),
-        //       SizedBox(height: 20,),
-        //       Card(
-        //         child: ListTile(
-        //           leading: Image.asset("assets/icons_assets/privacy.png",scale: 2,),
-        //           title: Text("Privacy and Policy"),
-        //           trailing: Icon(Icons.arrow_forward_ios,size: 20,),
-        //         ),
-        //       ),
-        //       SizedBox(height: 20,),
-        //       Card(
-        //         child: ListTile(
-        //           leading: Image.asset("assets/icons_assets/logout.png",scale: 2,),
-        //           title: Text("Logout"),
-        //           trailing: Icon(Icons.arrow_forward_ios,size: 20,),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
+        //  ),
         //   SizedBox(height: 80,),
         //   SizedBox(
         //     width: 253,
@@ -151,8 +197,3 @@ class ProfileScreen extends StatelessWidget {
         //   ),
         //
 
-      ],
-      ),
-    );
-  }
-}

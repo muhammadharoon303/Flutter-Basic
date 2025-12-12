@@ -198,7 +198,7 @@ class HomeScreen extends StatelessWidget {
                               value: 2355 / 4000,
                               strokeWidth: 8,
                               color: pinkColor,
-                              backgroundColor: whiteColor,
+                              backgroundColor: Color(0xffCDCDCD),
                             ),
                           ),
                           Padding(
@@ -296,14 +296,9 @@ class HomeScreen extends StatelessWidget {
                         Text("SCAN a Meal \n"),
                         Image.asset("assets/icons_assets/food.png", scale: 3),
                       ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                    ),),],
+              ),],
+          ),),
+      ),);
   }
 }

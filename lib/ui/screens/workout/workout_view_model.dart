@@ -60,7 +60,7 @@ final List<VideoModel> videoList = [
     duration: "05:30 am",
     category: "bodyweight",
     description: "Focus on major muscle groups (chest, back, legs, arms, and shoulders). Include compound movements like squats, deadlifts.",
-    videoUrl: "https://youtu.be/8367ETnagHo?si=2W52jlDPNInROxeX",
+    videoUrl: "https://youtu.be/pDns20FDhhw?si=3edfZJ_z1n_fY4oD",
 
   ),
   VideoModel(
@@ -69,7 +69,7 @@ final List<VideoModel> videoList = [
     duration: "05:30 am",
     category: "bodyweight",
     description: "Focus on major muscle groups (chest, back, legs, arms, and shoulders). Include compound movements like squats, deadlifts.",
-    videoUrl: "https://youtu.be/8367ETnagHo?si=2W52jlDPNInROxeX",
+    videoUrl: "https://youtu.be/csZxnUNrRIg?si=Zg87m_91X7mVsWm7",
 
   ),
   VideoModel(
