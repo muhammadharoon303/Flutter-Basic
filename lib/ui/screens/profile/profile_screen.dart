@@ -1,5 +1,8 @@
 import 'package:first/core/constants/color.dart';
+import 'package:first/ui/screens/profile/about_us_screen.dart';
 import 'package:first/ui/screens/profile/edit_profile_screen.dart';
+import 'package:first/ui/screens/profile/privacy&policy_screen.dart';
+import 'package:first/ui/screens/profile/terms&condition_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -63,40 +66,60 @@ class ProfileScreen extends StatelessWidget {
               padding:  EdgeInsets.symmetric(horizontal: 15),
               children: [
                 Card(
-                  child: ListTile(
+                  child:InkWell(
+                    onTap:(){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                          AboutUsScreen() ,));
+                    },child:ListTile(
                     leading:
                     Image.asset("assets/icons_assets/about.png", scale: 2),
                     title:  Text("About Us"),
                     trailing:  Icon(Icons.arrow_forward_ios, size: 20),
                   ),
+                  ),
                 ),
                  SizedBox(height: 20),
                 Card(
-                  child: ListTile(
+                  child:InkWell(
+                    onTap:(){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                         TermsConditionScreen() ,));
+                    },child:ListTile(
                     leading:
                     Image.asset("assets/icons_assets/term.png", scale: 2),
-                    title: const Text("Terms and Condition"),
-                    trailing: const Icon(Icons.arrow_forward_ios, size: 20),
+                    title:  Text("Terms and Conditions"),
+                    trailing:  Icon(Icons.arrow_forward_ios, size: 20),
+                  ),
                   ),
                 ),
                  SizedBox(height: 20),
 
                 Card(
-                  child: ListTile(
-                    leading:
-                    Image.asset("assets/icons_assets/privacy.png", scale: 2),
-                    title:  Text("Privacy and Policy"),
-                    trailing:  Icon(Icons.arrow_forward_ios, size: 20),
+                  child:InkWell(
+                    onTap:(){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                       PrivacyPolicyScreen() ,));
+                    },child:ListTile(
+                        leading:
+                        Image.asset("assets/icons_assets/privacy.png", scale: 2),
+                        title:  Text("Privacy and Policy"),
+                        trailing:  Icon(Icons.arrow_forward_ios, size: 20),
+                      ),
+                    ),
                   ),
-                ),
                SizedBox(height: 20),
 
                 Card(
-                  child: ListTile(
+                  child:InkWell(
+                    onTap:(){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                          PrivacyPolicyScreen() ,));
+                    },child:ListTile(
                     leading:
                     Image.asset("assets/icons_assets/logout.png", scale: 2),
                     title:  Text("Logout"),
-                    trailing: Icon(Icons.arrow_forward_ios, size: 20),
+                    trailing:  Icon(Icons.arrow_forward_ios, size: 20),
+                  ),
                   ),
                 ),
               ],
