@@ -112,8 +112,14 @@ class ProfileScreen extends StatelessWidget {
                 Card(
                   child:InkWell(
                     onTap:(){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                          PrivacyPolicyScreen() ,));
+                      showModalBottomSheet(context: context, builder: (context) {
+                        return Container(
+
+
+                        );
+                      },);
+
+
                     },child:ListTile(
                     leading:
                     Image.asset("assets/icons_assets/logout.png", scale: 2),

@@ -89,9 +89,7 @@ class QrScreen extends StatelessWidget {
                         // Image.asset("assets/icons_assets/scan.png",color: whiteColor,),
                         Icon(Icons.qr_code_scanner, color: whiteColor),
                         SizedBox(width: 20),
-                        Text(
-                          "Scan Barcode",
-                          style: TextStyle(color: whiteColor),
+                        Text("Scan Barcode", style: TextStyle(color: whiteColor),
                         ),
                       ],
                     ),
