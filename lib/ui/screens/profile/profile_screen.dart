@@ -6,11 +6,14 @@ import 'package:first/ui/screens/profile/privacy&policy_screen.dart';
 import 'package:first/ui/screens/profile/terms&condition_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../home/home_screen.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -125,9 +128,15 @@ class ProfileScreen extends StatelessWidget {
                                      Text("Are you sure you want to logout \n                   the app",style: style20,),
                                      Row(
                                        children: [
+
                                         OutlinedButton(onPressed: (){
-                                          Navigator.pop()
-                                        }, child: child)
+                                          Navigator.pop;
+                                        },
+                                            child:Text("Cancel",), ),
+                                         OutlinedButton(onPressed: (){
+                                           Navigator.pop;
+                                         },
+                                           child:Text("Yes,Logout",), ),
                                        ],
                                      )
                                    ],
@@ -135,8 +144,6 @@ class ProfileScreen extends StatelessWidget {
 
                         );
                       },);
-
-
                     },child:ListTile(
                     leading:
                     Image.asset("assets/icons_assets/logout.png", scale: 2),
@@ -148,6 +155,22 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20,bottom: 30),
+            child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: pinkColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                    child:  Text("Cancel Subscription", style: TextStyle(fontSize: 16, color: whiteColor,),
+                    ),
+                      ),
+          )
         ],
       ),
     );
