@@ -1,6 +1,5 @@
 import 'package:first/core/constants/textstyle.dart';
 import 'package:flutter/material.dart';
-
 import '../../../core/constants/color.dart';
 
 class TermsConditionScreen extends StatelessWidget {

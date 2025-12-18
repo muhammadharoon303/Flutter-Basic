@@ -1,5 +1,6 @@
 import 'package:first/core/constants/color.dart';
 import 'package:first/core/constants/textstyle.dart';
+import 'package:first/ui/screens/auth/signup/signup.dart';
 import 'package:first/ui/screens/profile/about_us_screen.dart';
 import 'package:first/ui/screens/profile/edit_profile_screen.dart';
 import 'package:first/ui/screens/profile/privacy&policy_screen.dart';
@@ -117,31 +118,29 @@ class ProfileScreen extends StatelessWidget {
                   child:InkWell(
                     onTap:(){
                       showModalBottomSheet(context: context, builder: (context) {
-                        return Container(
-                          margin: EdgeInsets.all(27),
-                           width: double.infinity,
-                                 height: 250,
-                                 child: Column(
-                                   children: [
-                                     Text("logout",style: style24,),
-                                     Divider(),
-                                     Text("Are you sure you want to logout \n                   the app",style: style20,),
-                                     Row(
-                                       children: [
-
-                                        OutlinedButton(onPressed: (){
-                                          Navigator.pop;
-                                        },
-                                            child:Text("Cancel",), ),
-                                         OutlinedButton(onPressed: (){
-                                           Navigator.pop;
-                                         },
-                                           child:Text("Yes,Logout",), ),
-                                       ],
-                                     )
-                                   ],
-                                 ),
-
+                        return AlertDialog(
+                          title: Text("logout",style: style24,) ,
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text("Are you sure you want to logout the app",style: style20,),
+                              Divider(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                 OutlinedButton(onPressed: (){
+                                   Navigator.pop(context); //page cancel da para
+                                 },
+                                     child:Text("Cancel",), ),
+                                  OutlinedButton(onPressed: (){
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) => SignUpScreen(),)); //logout na bad Sign-in page ta
+                                  },
+                                    child:Text("Yes,Logout",), ),
+                                ],
+                              )
+                            ],
+                          ),
                         );
                       },);
                     },child:ListTile(
