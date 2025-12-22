@@ -32,7 +32,6 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 color: pinkColor,
               ),
-
               /// Profile Image
               Positioned(
                 bottom: -40,
