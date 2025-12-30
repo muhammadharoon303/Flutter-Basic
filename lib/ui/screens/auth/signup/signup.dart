@@ -5,6 +5,7 @@ import 'package:first/core/constants/color.dart';
 import 'package:first/core/constants/textstyle.dart';
 import 'package:first/core/enums/enums.dart';
 import 'package:first/ui/custom_widgets/custom_button.dart';
+import 'package:first/ui/screens/auth/login/login.dart';
 import 'package:first/ui/screens/auth/login/login_viewmodel.dart';
 import 'package:first/ui/screens/root_screen/root_screen.dart';
 import 'package:flutter/material.dart';
@@ -98,6 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     child: Column(
                                       children: [
                                         TextFormField(
+                                          controller: model.emailController,
                                           validator: (value) {
                                             if (value!.isEmpty) {
                                               return "Please enter username";
@@ -111,6 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                                         SizedBox(height: 10),
                                         TextFormField(
+                                          controller: model.passwordController,
                                           validator: (value) {
                                             if (value!.isEmpty) {
                                               return "Please Enter Your Password ";
@@ -132,18 +135,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                 .globalLoginKey
                                                 .currentState!
                                                 .validate()) {
-                                              model.setState(ViewState.busy);
-                                              await Future.delayed(
-                                                Duration(seconds: 4),
-                                              );
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      RootScreen(),
-                                                ),
-                                              );
-                                              model.setState(ViewState.idle);
+                                    
+                                              model.singInWithEmailAndPassword(context);
+                                            
                                             }
                                           },
                                           child: CustomButton(
@@ -216,6 +210,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ),
                                           SizedBox(height: 10),
                                           TextFormField(
+                                            controller: model.emailController,
                                             validator: (value) {
                                               if (value!.isEmpty) {
                                                 return "Please Enter Email";
@@ -229,6 +224,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ),
                                           SizedBox(height: 10),
                                           TextFormField(
+                                       controller: model.passwordController,
                                             validator: (value) {
                                               if (value!.isEmpty) {
                                                 return "Please enter password";
@@ -250,13 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                   .globalSignUpKey
                                                   .currentState!
                                                   .validate()) {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        RootScreen(),
-                                                  ),
-                                                );
+                                   model.signUpWithEmailAndPassword(context);
                                               }
                                             },
                                             child: CustomButton(
@@ -287,13 +277,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               Text("Already have an account?"),
                                               TextButton(
                                                 onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          SignUpScreen(),
-                                                    ),
-                                                  );
+                                                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Login(),
+                                                  ),
+                                                );
                                                 },
                                                 child: Text(
                                                   "Login",
