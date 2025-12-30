@@ -39,6 +39,8 @@ dependencies:
   video_player: ^2.10.1
   youtube_player_flutter:
   firebase_core: ^4.3.0
+  firebase_auth:
+  firebase_database:
 
 dev_dependencies:
   flutter_test:
