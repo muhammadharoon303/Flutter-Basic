@@ -6,17 +6,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   print("Firebase initialized firbase is connected");
-  runApp(App());
+  runApp(const App());
 }
+
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
   }
 }
-

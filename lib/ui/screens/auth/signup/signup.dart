@@ -10,6 +10,7 @@ import 'package:first/ui/screens/auth/login/login_viewmodel.dart';
 import 'package:first/ui/screens/root_screen/root_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -118,9 +119,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             if (value!.isEmpty) {
                                               return "Please Enter Your Password ";
                                             } else if (value.isEmpty ||
-                                                value.length <=7) {
-                                              return "Please Enter at least 8 characters ";}
-                                            else{
+                                                value.length <= 7) {
+                                              return "Please Enter at least 8 characters ";
+                                            } else {
                                               return null;
                                             }
                                           },
@@ -135,9 +136,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                 .globalLoginKey
                                                 .currentState!
                                                 .validate()) {
-                                    
-                                              model.singInWithEmailAndPassword(context);
-                                            
+                                              model.signInWithEmailAndPassword(
+                                                context,
+                                              );
                                             }
                                           },
                                           child: CustomButton(
@@ -224,14 +225,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           ),
                                           SizedBox(height: 10),
                                           TextFormField(
-                                       controller: model.passwordController,
+                                            controller:
+                                                model.passwordController,
                                             validator: (value) {
                                               if (value!.isEmpty) {
                                                 return "Please enter password";
                                               } else if (value.isEmpty ||
-                                                  value.length <=7) {
-                                                return "Please Enter at least 8 characters ";}
-                                              else {
+                                                  value.length <= 7) {
+                                                return "Please Enter at least 8 characters ";
+                                              } else {
                                                 return null;
                                               }
                                             },
@@ -246,7 +248,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                   .globalSignUpKey
                                                   .currentState!
                                                   .validate()) {
-                                   model.signUpWithEmailAndPassword(context);
+                                                model
+                                                    .signUpWithEmailAndPassword(
+                                                      context,
+                                                    );
                                               }
                                             },
                                             child: CustomButton(
@@ -277,13 +282,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               Text("Already have an account?"),
                                               TextButton(
                                                 onPressed: () {
-                                                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Login(),
-                                                  ),
-                                                );
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Login(),
+                                                    ),
+                                                  );
                                                 },
                                                 child: Text(
                                                   "Login",

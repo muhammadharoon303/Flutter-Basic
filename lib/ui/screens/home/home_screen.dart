@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+
 import 'package:first/core/constants/color.dart';
 import 'package:first/core/constants/textstyle.dart';
 import 'package:first/ui/screens/qr_screen/qr_screen.dart';
@@ -40,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
 
-               SizedBox(height: 60),
+              SizedBox(height: 60),
 
               Stack(
                 children: [
@@ -244,11 +245,11 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color:whiteColor,
+                      color: whiteColor,
                       borderRadius: BorderRadius.circular(6),
                       boxShadow: [
                         BoxShadow(
-                          color:  Color(0xff989898).withOpacity(0.15),
+                          color: Color(0xff989898).withOpacity(0.15),
                           blurRadius: 4,
                           spreadRadius: 4,
                           offset: Offset(-1, 2),
@@ -262,14 +263,28 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        TextButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => QrScreen(),));
-                        }, child: Column(
-                          children: [Text("SCAN Bar\n   Code",style: TextStyle(color: blackColor),),
-                            Image.asset(
-                              "assets/icons_assets/barcode.png",
-                              scale: 3,
-                            ),])),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => QrScreen(),
+                              ),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                "SCAN Bar\n   Code",
+                                style: TextStyle(color: blackColor),
+                              ),
+                              Image.asset(
+                                "assets/icons_assets/barcode.png",
+                                scale: 3,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -296,9 +311,14 @@ class HomeScreen extends StatelessWidget {
                         Text("SCAN a Meal \n"),
                         Image.asset("assets/icons_assets/food.png", scale: 3),
                       ],
-                    ),),],
-              ),],
-          ),),
-      ),);
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first/core/enums/enums.dart';
-import 'package:first/core/services/auth_services.dart';
 import 'package:first/core/view_model/view_model.dart';
 import 'package:first/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,47 +13,134 @@ class LoginViewModel extends BaseViewModel {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  final AuthServices _authServices = AuthServices();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   bool isLoading = false;
+
   void setLoading(bool value) {
     isLoading = value;
     notifyListeners();
   }
 
-signUpWithEmailAndPassword(BuildContext context) async {
-  setState(ViewState.busy);
-    final user = await _authServices.signUpWithEmailAndPassword(emailController.text, passwordController.text );
-    print("user data is null or not ${user.toString()}");
-   setState(ViewState.idle);
-    print("user data is null or not ${user.toString()}");
-    if (user != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Sign up failed")));
+  // =========================
+  // SIGN UP
+  // =========================
+  Future<void> signUpWithEmailAndPassword(BuildContext context) async {
+    try {
+      setState(ViewState.busy);
+
+      UserCredential userCredential = await _auth
+          .createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
+
+      User? user = userCredential.user;
+
+      setState(ViewState.idle);
+
+      if (user != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Account created successfully")),
+        );
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      setState(ViewState.idle);
+
+      String message = "";
+
+      if (e.code == 'email-already-in-use') {
+        message = "This email is already registered";
+      } else if (e.code == 'weak-password') {
+        message = "Password is too weak";
+      } else if (e.code == 'invalid-email') {
+        message = "Invalid email address";
+      } else {
+        message = e.message ?? "Signup failed";
+      }
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
+
+      print("Signup Error: ${e.code}");
+    } catch (e) {
+      setState(ViewState.idle);
+
+      print("Signup Error: $e");
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Something went wrong")));
     }
- 
   }
 
-  singInWithEmailAndPassword(BuildContext context) async {
+  // =========================
+  // SIGN IN
+  // =========================
+  Future<void> signInWithEmailAndPassword(BuildContext context) async {
     try {
+      setState(ViewState.busy);
 
-   setState(ViewState.busy);
-    final user = await _authServices.singInWithEmailAndPassword(emailController.text, passwordController.text );
-    print("user data is null or not ${user.toString()}");
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
 
-    if (user != null) {
-       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Sign in successfully")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Sign in failed")));
-    }
-    }catch(e){
-      print("Error signing in: $e");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("User have no account with this email and password")));
+      User? user = userCredential.user;
+
       setState(ViewState.idle);
-    }
-     setState(ViewState.idle);
 
+      if (user != null) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Sign in successfully")));
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      setState(ViewState.idle);
+
+      String message = "";
+
+      if (e.code == 'user-not-found') {
+        message = "No user found with this email";
+      } else if (e.code == 'wrong-password') {
+        message = "Wrong password";
+      } else if (e.code == 'invalid-email') {
+        message = "Invalid email address";
+      } else {
+        message = e.message ?? "Login failed";
+      }
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
+
+      print("Login Error: ${e.code}");
+    } catch (e) {
+      setState(ViewState.idle);
+
+      print("Login Error: $e");
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Something went wrong")));
+    }
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 }
